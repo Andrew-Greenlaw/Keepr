@@ -15,6 +15,7 @@ public class Keep : IHasCreator
   public int Kept { get; set; }
 }
 
-public class KeptKeep : Keep
+public class KeepInVault : Keep
 {
+  public int vaultKeepId { get; set; }
 }
