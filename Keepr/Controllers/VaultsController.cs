@@ -45,7 +45,7 @@ public class VaultsController : ControllerBase
   {
     try
     {
-      Vault vault = _vs.GetVaultById(id);
+      Vault vault = _vs.GetVaultById(id, "");
       return Ok(vault);
     }
     catch (Exception e)

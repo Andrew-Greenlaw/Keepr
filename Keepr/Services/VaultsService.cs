@@ -15,14 +15,14 @@ public class VaultsService
     return _repo.Create(vaultData);
   }
 
-  internal Vault GetVaultById(int id)
+  internal Vault GetVaultById(int id, string userId)
   {
     Vault vault = _repo.GetById(id);
     if (vault == null)
     {
       throw new Exception("This vault doesn't exist anymore");
     }
-    if (vault.IsPrivate == true)
+    if (vault.IsPrivate == true && vault.CreatorId != userId)
     {
       throw new Exception("This Vault is Private");
     }
@@ -31,7 +31,7 @@ public class VaultsService
 
   internal Vault UpdateVault(Vault vaultData, string userId)
   {
-    Vault original = GetVaultById(vaultData.Id);
+    Vault original = GetVaultById(vaultData.Id, userId);
     if (original.CreatorId != userId)
     {
       throw new Exception("this isnt yours dont update it");
@@ -46,13 +46,13 @@ public class VaultsService
 
   internal List<KeepInVault> GetAllKeeps(int id)
   {
-    Vault vault = GetVaultById(id);
+    Vault vault = GetVaultById(id, "");
     return _vaultKeepsRepo.Get(id);
   }
 
   internal void DeleteVault(int id, Account userInfo)
   {
-    Vault vault = GetVaultById(id);
+    Vault vault = GetVaultById(id, "");
     if (vault.CreatorId != userInfo.Id)
     {
       throw new Exception("you cannot delete this go away");

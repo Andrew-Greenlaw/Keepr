@@ -48,6 +48,7 @@ public class KeepsController : ControllerBase
     try
     {
       Keep keep = _ks.GetById(id);
+      _ks.UpdateKeep(keep);
       return Ok(keep);
     }
     catch (Exception e)

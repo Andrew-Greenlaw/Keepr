@@ -12,7 +12,7 @@ public class VaultKeepsService
 
   internal VaultKeep CreateVaultKeep(VaultKeep data)
   {
-    Vault vault = _vaultsService.GetVaultById(data.VaultId);
+    Vault vault = _vaultsService.GetVaultById(data.VaultId, data.CreatorId);
     if (vault.CreatorId != data.CreatorId)
     {
       throw new Exception("You Cannot Put this in someone's Vault go away!");

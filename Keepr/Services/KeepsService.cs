@@ -27,6 +27,11 @@ public class KeepsService
     }
     return keep;
   }
+  public void UpdateKeep(Keep k)
+  {
+    k.Views++;
+    _repo.Update(k);
+  }
 
   public Keep UpdateKeep(Keep keepData, string id)
   {
@@ -38,7 +43,7 @@ public class KeepsService
     originalKeep.Name = keepData.Name ?? keepData.Name;
     originalKeep.Description = keepData.Description ?? originalKeep.Description;
     originalKeep.Img = keepData.Img ?? originalKeep.Img;
-    originalKeep.Views = keepData.Views;
+    originalKeep.Views = originalKeep.Views;
     Keep updated = _repo.Update(originalKeep);
     return updated;
   }
