@@ -27,6 +27,19 @@ public class VaultsController : ControllerBase
       return BadRequest(e.Message);
     }
   }
+  [HttpGet("{id}/keeps")]
+  public ActionResult<List<KeepInVault>> GetAllKeepsInVault(int id)
+  {
+    try
+    {
+      List<KeepInVault> keepsInVault = _vs.GetAllKeeps(id);
+      return Ok(keepsInVault);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
   [HttpGet("{id}")]
   public ActionResult<Vault> GetVaultById(int id)
   {

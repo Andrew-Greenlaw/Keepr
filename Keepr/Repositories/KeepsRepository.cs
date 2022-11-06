@@ -49,10 +49,12 @@ public class KeepsRepository : BaseRepository, IRepository<Keep, int>
     string sql = @"
     SELECT
     k.*,
+    Count(k.Id) As Kept,
     a.*
     FROM keeps k
     JOIN accounts a ON a.Id = k.creatorId
     WHERE k.id = @id
+    Group By k.Id
     ;";
     return _db.Query<Keep, Profile, Keep>(sql, (k, p) =>
     {

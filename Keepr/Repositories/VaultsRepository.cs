@@ -34,10 +34,7 @@ public class VaultsRepository : BaseRepository, IRepository<Vault, int>
       return v;
     }, new { id }).FirstOrDefault();
   }
-  public List<Vault> Get()
-  {
-    throw new NotImplementedException();
-  }
+
   public Vault Update(Vault data)
   {
     string sql = @"
@@ -59,5 +56,10 @@ public class VaultsRepository : BaseRepository, IRepository<Vault, int>
   {
     string sql = "DELETE FROM vaults WHERE id = @Id;";
     _db.Execute(sql, new { id });
+  }
+
+  public List<Vault> Get()
+  {
+    throw new NotImplementedException();
   }
 }

@@ -1,11 +1,13 @@
 namespace Keepr.Services;
 public class VaultsService
 {
-  public readonly VaultsRepository _repo;
+  private readonly VaultsRepository _repo;
+  private readonly VaultKeepsRepository _vaultKeepsRepo;
 
-  public VaultsService(VaultsRepository repo)
+  public VaultsService(VaultsRepository repo, VaultKeepsRepository vaultKeepsRepo)
   {
     _repo = repo;
+    _vaultKeepsRepo = vaultKeepsRepo;
   }
 
   public Vault CreateVault(Vault vaultData)
@@ -19,6 +21,10 @@ public class VaultsService
     if (vault == null)
     {
       throw new Exception("This vault doesn't exist anymore");
+    }
+    if (vault.IsPrivate == true)
+    {
+      throw new Exception("This Vault is Private");
     }
     return vault;
   }
@@ -36,6 +42,12 @@ public class VaultsService
     original.IsPrivate = vaultData.IsPrivate;
     Vault updated = _repo.Update(original);
     return updated;
+  }
+
+  internal List<KeepInVault> GetAllKeeps(int id)
+  {
+    Vault vault = GetVaultById(id);
+    return _vaultKeepsRepo.Get(id);
   }
 
   internal void DeleteVault(int id, Account userInfo)
