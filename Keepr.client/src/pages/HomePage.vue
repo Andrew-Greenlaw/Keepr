@@ -1,44 +1,51 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mt-4">
+        <div class="masonry-with-columns">
+          <KeepCard v-for="k in keeps" :key="k.id" :keep="k" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { computed } from '@vue/reactivity';
+import { onMounted } from 'vue';
+import { AppState } from '../AppState.js';
+import { keepsService } from '../services/KeepsService.js'
+import Pop from '../utils/Pop.js';
+
 export default {
   setup() {
-    return {}
+    async function GetAllKeeps() {
+      try {
+        await keepsService.GetAllKeeps()
+      } catch (error) {
+        Pop.error("[GetAllKeeps]", error)
+      }
+    }
+    onMounted(() => {
+      GetAllKeeps()
+    })
+    return {
+      keeps: computed(() => AppState.keeps)
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
+.masonry-with-columns {
+  columns: 4;
+  column-gap: 2rem;
+}
 
-  .home-card {
-    width: 50vw;
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
+@media screen and (max-width: 600px) {
+  .masonry-with-columns {
+    columns: 2;
+    column-gap: 2rem;
   }
 }
 </style>
