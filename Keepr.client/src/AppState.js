@@ -7,6 +7,18 @@ export const AppState = reactive({
   account: {},
   /** @type {import('./models/Keep.js').Keep[]} */
   keeps: [],
-  /** @type {import('./models/Keep.js').Keep | null} */
-  keep: {}
+  /** @type {import('./models/Keep.js').Keep} */
+  keep: {},
+  /** @type {import('./models/Vault.js').Vault[]} */
+  vaults: [],
+  /** @type {import('./models/Profile.js').Profile} */
+  profile: {},
+  /** @type {import('./models/Keep.js').Keep[]} */
+  profileKeeps: [],
+  /** @type {import('./models/Vault.js').Vault[]} */
+  profileVaults: [],
+  /** @type {import('./models/vault.js').vault} */
+  vault: {},
+  /** @type {import('./models/VaultKeep.js').VaultKeep[]} */
+  vaultKeeps: []
 })

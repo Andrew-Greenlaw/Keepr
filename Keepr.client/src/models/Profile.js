@@ -1,8 +1,8 @@
 export class Profile {
   constructor(data) {
-    this.Id = data.Id
-    this.Name = data.Name
-    this.Picture = data.Picture
-    this.CoverImg = data.CoverImg
+    this.id = data.id
+    this.name = data.name
+    this.picture = data.picture
+    this.coverImg = data.coverImg || "https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png"
   }
 }

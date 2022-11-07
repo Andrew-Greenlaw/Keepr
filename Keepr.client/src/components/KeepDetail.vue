@@ -6,7 +6,6 @@
       </div>
       <div class="col-md-6 py-4">
         <div class="row flex-column justify-content-between h-100">
-
           <div class="col-12">
             <div class="row">
               <div class="col-12 text-end pe-4"><button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -90,6 +89,17 @@ export default {
   h5 {
     font-size: x-small;
   }
+}
 
+@media screen {
+  .profile-img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+  }
+
+  h5 {
+    font-size: x-small;
+  }
 }
 </style>
