@@ -5,17 +5,20 @@
   <main>
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
   <ModalComponent id="keepModal">
     <KeepDetail />
   </ModalComponent>
+
   <ModalComponent id="vaultKeepModal">
     <VaultKeepDetail />
   </ModalComponent>
-  <ModalComponent>
 
+  <ModalComponent id="newKeepModal">
+    <NewKeepModal />
+  </ModalComponent>
+
+  <ModalComponent id="newVaultModal">
+    <NewVaultModal />
   </ModalComponent>
 </template>
 

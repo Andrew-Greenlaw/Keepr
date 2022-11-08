@@ -5,6 +5,7 @@ class VaultKeepsService {
   async createVaultKeep(data) {
     console.log(data)
     await api.post(`api/vaultKeeps`, data)
+    AppState.keep.kept++
   }
   async deleteVaultKeep(id) {
     const res = await api.delete(`api/vaultKeeps/${id}`)

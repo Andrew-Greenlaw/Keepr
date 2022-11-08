@@ -7,7 +7,23 @@
         <h1>{{ vault.name }}</h1>
         <h4>By: {{ vault.creator?.name }}</h4>
       </div>
-      <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+      <div class="edit-button col-md-3 text-end" :style="account.id == vault.creatorId ? '' : 'visibility: hidden'">
+        <div class="dropdown ">
+          <button class="btn dropdown-toggle lighten-30 text-uppercase selectable rounded" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            ...
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editVaultModal">Edit Vault</div>
+            </li>
+            <li>
+              <div class="dropdown-item" @click="deleteVault(vault.id)">Delete</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6 d-flex flex-column align-items-center justify-content-center mb-4">
         <div>
           <h3>{{ keepsInVault.length }} Keeps</h3>
         </div>
@@ -28,9 +44,10 @@
 import Pop from '../utils/Pop.js'
 import { vaultsService } from '../services/VaultsService.js'
 import { useRoute } from 'vue-router'
-import { onMounted } from 'vue'
+import { onMounted, watchEffect } from 'vue'
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState.js'
+import { router } from '../router.js'
 
 export default {
   setup() {
@@ -53,9 +70,18 @@ export default {
       GetVaultById()
       GetVaultKeeps()
     })
+
     return {
       vault: computed(() => AppState.vault),
-      keepsInVault: computed(() => AppState.keepsInVault)
+      keepsInVault: computed(() => AppState.keepsInVault),
+      account: computed(() => AppState.account),
+      async deleteVault() {
+        try {
+
+        } catch (error) {
+
+        }
+      }
     }
   }
 }
@@ -67,7 +93,6 @@ export default {
   height: 15rem;
   background-position: center;
   background-size: cover;
-  margin-bottom: 2rem;
 }
 
 .masonry-with-columns {

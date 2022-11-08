@@ -1,8 +1,11 @@
 <template>
   <router-link :to="{ name: 'Vault', params: { id: vault.id } }">
-    <div class="vault-card selectable" :style="{ backgroundImage: `url(${vault.img})` }">
+    <div class="vault-card selectable shadow" :style="{ backgroundImage: `url(${vault.img})` }">
       <div class="background d-flex align-items-end h-100">
-        <h3 class="text-light">{{ vault.name }}</h3>
+        <div class="d-flex flex-column justify-content-between h-100 w-100">
+          <i class="mdi mdi-lock text-end p-2 fs-3 text-light" :style="vault.isPrivate ? '' : 'visibility: hidden'"></i>
+          <h3 class="text-light p-1">{{ vault.name }}</h3>
+        </div>
       </div>
     </div>
   </router-link>
@@ -31,6 +34,11 @@ export default {
   height: 10rem;
   background-size: cover;
   background-position: center;
+  transition: transform .2s;
+}
+
+.vault-card:hover {
+  transform: scale(1.05)
 }
 
 .background {

@@ -6,7 +6,17 @@
         <img class="img-fluid shadow" :src="account.picture" alt="Account Picture" :title="account.name">
       </div>
       <div class="edit-button col-md-7 text-end">
-        <button type="button" class="btn" title="Edit Account">...</button>
+        <div class="dropdown ">
+          <button class="btn dropdown-toggle lighten-30 text-uppercase selectable rounded" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            ...
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAccountModal">Edit Account</div>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="col-6 d-flex flex-column align-items-center justify-content-center">
         <h1>{{ account.name }}</h1>

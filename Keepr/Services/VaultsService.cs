@@ -44,9 +44,9 @@ public class VaultsService
     return updated;
   }
 
-  internal List<KeepInVault> GetAllKeeps(int id)
+  internal List<KeepInVault> GetAllKeeps(int id, string userId)
   {
-    Vault vault = GetVaultById(id, "");
+    Vault vault = GetVaultById(id, userId);
     return _vaultKeepsRepo.Get(id);
   }
 

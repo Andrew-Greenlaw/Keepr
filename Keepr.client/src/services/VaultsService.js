@@ -17,5 +17,10 @@ class VaultsService {
     AppState.keepsInVault = res.data.map(k => new KeepInVault(k))
     console.log('VaultKeeps', AppState.vaultKeeps)
   }
+  async createVault(data) {
+    const res = await api.post(`api/vaults`, data)
+    console.log(res.data)
+    AppState.vaults.push(new Vault(res.data))
+  }
 }
 export const vaultsService = new VaultsService()

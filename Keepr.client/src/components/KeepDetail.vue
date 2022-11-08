@@ -1,49 +1,53 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 p-0 d-flex align-items-center justify-content-center bg-black keep-img">
-        <img class="img-fluid keep-img" :src="keep.img" :alt="keep.name" :title="keep.name">
-      </div>
-      <div class="col-md-6 py-4">
-        <div class="row flex-column justify-content-between h-100">
-          <div class="col-12">
-            <div class="row">
-              <div class="col-12 text-end pe-4"><button type="button" class="btn-close" data-bs-dismiss="modal"
-                  aria-label="Close"></button></div>
-              <div class="col-12 d-flex justify-content-center gap-3">
-                <div class="d-flex align-items-center"><i class="mdi mdi-eye fs-3 px-2"></i> {{ keep.views }}</div>
-                <div class="d-flex align-items-center"><i class="mdi mdi-alpha-k-box-outline fs-3 px-2"></i>
-                  {{ keep.kept }}
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 p-0 d-flex align-items-center justify-content-center bg-black keep-img">
+            <img class="img-fluid keep-img" :src="keep.img" :alt="keep.name" :title="keep.name">
+          </div>
+          <div class="col-md-6 py-4">
+            <div class="row flex-column justify-content-between h-100">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12 text-end pe-4"><button type="button" class="btn-close" data-bs-dismiss="modal"
+                      aria-label="Close"></button></div>
+                  <div class="col-12 d-flex justify-content-center gap-3">
+                    <div class="d-flex align-items-center"><i class="mdi mdi-eye fs-3 px-2"></i> {{ keep.views }}</div>
+                    <div class="d-flex align-items-center"><i class="mdi mdi-alpha-k-box-outline fs-3 px-2"></i>
+                      {{ keep.kept }}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <h2 class="text-center">{{ keep.name }}</h2>
-            <div class="p-3 px-5">
-              <p>{{ keep.description }}</p>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="row justify-content-between">
-              <div class="col-6 d-flex align-items-center">
-                <form @submit.prevent="handleSubmit()" v-if="account">
-                  <div class="d-flex align-items-center">
-                    <div class="input-group">
-                      <select class="form-select" v-model="editable.vaultId" id="vaults">
-                        <option :value="v.id" v-for="v in vaults">{{ v.name }}</option>
-                      </select>
-                    </div>
-                    <button type="submit" class="btn btn-info">Save</button>
-                  </div>
-                </form>
+              <div class="col-12">
+                <h2 class="text-center">{{ keep.name }}</h2>
+                <div class="p-3 px-5">
+                  <p>{{ keep.description }}</p>
+                </div>
               </div>
-              <div class="col-6 d-flex align-items-center justify-content-end">
-                <div class="d-flex align-items-center text-end p-2 rounded selectable" data-bs-dismiss="modal"
-                  @click="GoToProfile(keep.creatorId)">
-                  <img class="img-fluid profile-img" :src="keep.creator?.picture" alt="Creator Profile Picture"
-                    :title="keep.creator?.name">
-                  <h5 class="px-2">{{ keep.creator?.name }}</h5>
+              <div class="col-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 d-flex align-items-center">
+                    <form @submit.prevent="handleSubmit()" v-if="account">
+                      <div class="d-flex align-items-center">
+                        <div class="input-group">
+                          <select class="form-select" v-model="editable.vaultId" id="vaults">
+                            <option :value="v.id" v-for="v in vaults">{{ v.name }}</option>
+                          </select>
+                        </div>
+                        <button type="submit" class="btn btn-info">Save</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-6 d-flex align-items-center justify-content-end">
+                    <div class="d-flex align-items-center text-end p-2 rounded selectable" data-bs-dismiss="modal"
+                      @click="GoToProfile(keep.creatorId)">
+                      <img class="img-fluid profile-img" :src="keep.creator?.picture" alt="Creator Profile Picture"
+                        :title="keep.creator?.name">
+                      <h5 class="px-2">{{ keep.creator?.name }}</h5>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -94,6 +98,10 @@ export default {
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
+}
+
+.modal-content {
+  border: none;
 }
 
 .keep-img {

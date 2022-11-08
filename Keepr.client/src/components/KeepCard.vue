@@ -1,5 +1,5 @@
 <template>
-  <div class="keep-card">
+  <div class="keep-card shadow">
     <img class="photo img-fluid selectable" :src="keep.img" alt="keep image" data-bs-toggle="modal"
       data-bs-target="#keepModal" @click="GetKeepById(keep.id)">
     <div class="text">
@@ -36,6 +36,15 @@ export default {
         } catch (error) {
           Pop.error("[GetByKeepId]", error)
         }
+      },
+      async RemoveMyKeep(id) {
+        try {
+          const yes = await Pop.confirm("Are you Sure you want to delete your Keep?")
+          if (!yes) { return }
+          await keepsService.DeleteKeep(id)
+        } catch (error) {
+          Pop.error("[DeleteMyKeep]", error)
+        }
       }
     }
   }
@@ -47,7 +56,11 @@ export default {
 .keep-card {
   margin-bottom: 1.5rem;
   position: relative;
+  transition: transform .2s;
+}
 
+.keep-card:hover {
+  transform: scale(1.05)
 }
 
 .button-delete {
