@@ -9,14 +9,14 @@
       </div>
       <div class="col-6 d-flex flex-column align-items-center justify-content-center">
         <div>
-          <h3>{{ vaultKeeps.length }} Keeps</h3>
+          <h3>{{ keepsInVault.length }} Keeps</h3>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="masonry-with-columns">
-          <ProfileKeepCard v-for="k in vaultKeeps" :key="k.id" :keep="k" />
+          <VaultKeepCard v-for="k in keepsInVault" :key="k.id" :keep="k" :vault="vault" />
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@ export default {
     })
     return {
       vault: computed(() => AppState.vault),
-      vaultKeeps: computed(() => AppState.vaultKeeps)
+      keepsInVault: computed(() => AppState.keepsInVault)
     }
   }
 }

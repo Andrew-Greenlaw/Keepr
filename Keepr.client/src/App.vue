@@ -11,7 +11,11 @@
   <ModalComponent id="keepModal">
     <KeepDetail />
   </ModalComponent>
+  <ModalComponent id="vaultKeepModal">
+    <VaultKeepDetail />
+  </ModalComponent>
   <ModalComponent>
+
   </ModalComponent>
 </template>
 

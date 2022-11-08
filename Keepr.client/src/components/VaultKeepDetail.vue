@@ -27,16 +27,7 @@
           <div class="col-12">
             <div class="row justify-content-between">
               <div class="col-6 d-flex align-items-center">
-                <form @submit.prevent="handleSubmit()" v-if="account">
-                  <div class="d-flex align-items-center">
-                    <div class="input-group">
-                      <select class="form-select" v-model="editable.vaultId" id="vaults">
-                        <option :value="v.id" v-for="v in vaults">{{ v.name }}</option>
-                      </select>
-                    </div>
-                    <button type="submit" class="btn btn-info">Save</button>
-                  </div>
-                </form>
+                <button v-if="account.id == vault.creatorId">Remove Keep</button>
               </div>
               <div class="col-6 d-flex align-items-center justify-content-end">
                 <div class="d-flex align-items-center text-end p-2 rounded selectable" data-bs-dismiss="modal"
@@ -68,18 +59,9 @@ export default {
     const editable = ref({})
     return {
       editable,
-      async handleSubmit() {
-        try {
-          editable.value.keepId = this.keep.id
-          await vaultKeepsService.createVaultKeep(editable.value)
-          Pop.toast("you added this to your vault")
-        } catch (error) {
-          Pop.error('[handleSubmit]', error)
-        }
-      },
       keep: computed(() => AppState.keep),
       account: computed(() => AppState.account),
-      vaults: computed(() => AppState.vaults),
+      vault: computed(() => AppState.vault),
       async GoToProfile(id) {
         router.push({ name: 'Profile', params: { id: id } })
       }

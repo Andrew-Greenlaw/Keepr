@@ -1,17 +1,21 @@
 <template>
-  <div class="keep-card selectable" data-bs-toggle="modal" data-bs-target="#keepModal" @click="GetKeepById(keep.id)">
-    <img class="photo img-fluid" :src="keep.img" alt="keep image">
+  <div class="keep-card">
+    <img class="photo img-fluid selectable" :src="keep.img" alt="keep image" data-bs-toggle="modal"
+      data-bs-target="#keepModal" @click="GetKeepById(keep.id)">
     <div class="text">
       <div>
         <h3>{{ keep.name }}</h3>
       </div>
     </div>
     <img class="profile-img" :src="keep.creator?.picture" :alt="keep.creator?.name" :title="keep.creator?.name">
+    <div class="button-delete selectable bg-danger d-flex justify-content-center align-items-center"
+      @click="RemoveMyKeep(keep.id)" v-if="account.id == keep.creatorId"><i class="mdi mdi-window-close"></i></div>
   </div>
 </template>
 
-
 <script>
+import { computed } from '@vue/reactivity';
+import { AppState } from '../AppState.js';
 import { Keep } from '../models/Keep.js';
 import { keepsService } from '../services/KeepsService.js';
 import Pop from '../utils/Pop.js';
@@ -25,6 +29,7 @@ export default {
   },
   setup() {
     return {
+      account: computed(() => AppState.account),
       async GetKeepById(id) {
         try {
           await keepsService.GetKeepById(id)
@@ -45,6 +50,21 @@ export default {
 
 }
 
+.button-delete {
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(.5rem, -.5rem);
+  transition: transform .2s;
+}
+
+.button-delete:hover {
+  transform: scale(1.3) translate(.5rem, -.5rem);
+}
+
 .text {
   position: absolute;
   bottom: 1rem;
@@ -52,7 +72,6 @@ export default {
   color: white;
   width: auto;
 }
-
 
 .profile-img {
   position: absolute;
