@@ -2,23 +2,21 @@
   <div class="container-fluid vault-page">
     <div class="row flex-column align-items-center justify-content-center">
       <div
-        class="col-3 cover-img rounded shadow d-flex flex-column justify-content-end align-items-center mt-5 text-light"
+        class="col-lg-4 col-md-6 col-11 cover-img rounded shadow d-flex flex-column justify-content-end align-items-center mt-5 text-light"
         :style="{ backgroundImage: `url(${vault.img})` }" title="vault image">
-        <h1>{{ vault.name }}</h1>
-        <h4>By: {{ vault.creator?.name }}</h4>
+        <h1 class="text-shadow">{{ vault.name }}</h1>
+        <h4 class="text-shadow">By: {{ vault.creator?.name }}</h4>
       </div>
       <div class="edit-button col-md-3 text-end" :style="account.id == vault.creatorId ? '' : 'visibility: hidden'">
-        <div class="dropdown ">
+        <div class="dropdown">
           <button class="btn dropdown-toggle lighten-30 text-uppercase selectable rounded" type="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+            data-bs-toggle="dropdown" aria-expanded="false" title="Options">
             ...
           </button>
           <ul class="dropdown-menu">
             <li>
-              <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editVaultModal">Edit Vault</div>
-            </li>
-            <li>
-              <div class="dropdown-item" @click="deleteVault(vault.id)">Delete</div>
+              <div class="dropdown-item selectable" @click="deleteVault(vault.id)" aria-label="Delete Vault">Delete
+              </div>
             </li>
           </ul>
         </div>
@@ -47,8 +45,6 @@ import { useRoute, useRouter } from 'vue-router'
 import { onMounted, watchEffect } from 'vue'
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState.js'
-import { router } from '../router.js'
-
 export default {
   setup() {
     const route = useRoute()
@@ -57,20 +53,34 @@ export default {
       try {
         await vaultsService.GetVaultById(route.params.id)
       } catch (error) {
-        Pop.error('[GetVaultById]', error)
+        router.push({ name: 'Home' })
+        // Pop.error('[GetVaultById]', error)
+        Pop.toast('this is private or doesnt exist!')
+
       }
     }
     async function GetVaultKeeps() {
       try {
         await vaultsService.GetKeepsInVault(route.params.id)
       } catch (error) {
-        Pop.error('[GetVaultKeeps]', error)
+        router.push({ name: 'Home' })
+        // Pop.error('[GetVaultKeeps]', error)
+        Pop.toast('this is private or doesnt exist!')
+
       }
     }
     onMounted(() => {
       GetVaultById()
       GetVaultKeeps()
     })
+
+    // watchEffect(() => {
+    //   if (AppState.vault?.isPrivate && AppState.account?.id == AppState.vault?.creatorId) {
+    //     router.push({ name: 'Home' })
+    // Pop.toast('this is private or doesnt exist!')
+    //     AppState.vault = null
+    //   }
+    // })
 
     return {
       vault: computed(() => AppState.vault),
@@ -97,6 +107,17 @@ export default {
   height: 15rem;
   background-position: center;
   background-size: cover;
+}
+
+.keep-card:hover {
+  transform: scale(1.05)
+}
+
+.text-shadow {
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(83, 83, 83);
+  font-weight: bold;
+  letter-spacing: 0.08rem
 }
 
 .masonry-with-columns {

@@ -45,7 +45,7 @@ export default {
       editable,
       async handleSubmit() {
         try {
-          if (!AppState.account) {
+          if (!AppState.account.id) {
             return AuthService.loginWithRedirect()
           }
           await keepsService.createKeep(editable.value)

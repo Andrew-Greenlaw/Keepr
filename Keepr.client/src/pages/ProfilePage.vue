@@ -94,6 +94,7 @@ export default {
     width: 10rem;
     border-radius: 50%;
     transform: translateY(5rem);
+    object-fit: cover;
   }
 }
 
@@ -101,6 +102,7 @@ export default {
   columns: 4;
   column-gap: 2rem;
 }
+
 
 @media screen and (max-width: 600px) {
   .masonry-with-columns {

@@ -1,14 +1,15 @@
 <template>
   <span class="navbar-text">
-    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-      v-if="!user.isAuthenticated">
+    <button class="btn selectable lighten-30 text-uppercase my-2 my-lg-0" @click="login" v-if="!user.isAuthenticated">
       Login
     </button>
     <div v-else>
       <div class="dropdown dropstart my-2 my-lg-0">
-        <div type="button" class=" border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">
+        <div type="button" class=" border-0 selectable no-select rounded" data-bs-toggle="dropdown"
+          aria-expanded="false">
           <div v-if="account.picture || user.picture">
-            <img :src="account.picture || user.picture" alt="account photo" class="rounded-circle" />
+            <img :src="account.picture || user.picture" alt="account photo" class="rounded-circle"
+              title="Account Picture" />
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown">
@@ -18,7 +19,8 @@
                 Manage Account
               </div>
             </router-link>
-            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
+            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout"
+              aria-label="Logout">
               <i class="mdi mdi-logout"></i>
               logout
             </div>

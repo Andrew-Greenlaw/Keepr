@@ -11,10 +11,12 @@
         </button>
         <ul class="dropdown-menu">
           <li>
-            <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newKeepModal">New Keep</div>
+            <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newKeepModal"
+              aria-label="Open New Keep Form">New Keep</div>
           </li>
           <li>
-            <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newVaultModal">New Vault</div>
+            <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newVaultModal"
+              aria-label="Open New Vault Form">New Vault</div>
           </li>
         </ul>
       </div>
@@ -22,7 +24,7 @@
     </div>
     <router-link :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
-        <img alt="logo" src="Keepr logo.png" height="45" />
+        <img alt="logo" src="Keepr logo.png" height="45" title="Logo" />
       </div>
     </router-link>
     <Login />
@@ -47,12 +49,6 @@ a:hover {
 .navbar {
   --bs-navbar-padding-y: none;
 }
-
-/* .navbar-nav .router-link-exact-active {
-  border-bottom: 2px solid var(--bs-success);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-} */
 
 @media screen and (min-width: 768px) {
   nav {

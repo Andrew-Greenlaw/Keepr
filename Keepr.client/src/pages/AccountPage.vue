@@ -87,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 .cover-img {
   height: 25rem;
-  background-position: bottom;
+  background-position: center;
   background-size: cover;
 
   img {

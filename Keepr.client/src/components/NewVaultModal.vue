@@ -42,9 +42,9 @@ export default {
     const editable = ref({ description: "Not Implemented" })
     return {
       editable,
-      async handSubmit() {
+      async handleSubmit() {
         try {
-          if (!AppState.account) {
+          if (!AppState.account.id) {
             return AuthService.loginWithRedirect()
           }
           await vaultsService.createVault(editable.value)

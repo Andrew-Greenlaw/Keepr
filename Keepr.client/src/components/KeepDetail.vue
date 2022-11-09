@@ -13,8 +13,11 @@
                   <div class="col-12 text-end pe-4"><button type="button" class="btn-close" data-bs-dismiss="modal"
                       aria-label="Close"></button></div>
                   <div class="col-12 d-flex justify-content-center gap-3">
-                    <div class="d-flex align-items-center"><i class="mdi mdi-eye fs-3 px-2"></i> {{ keep.views }}</div>
-                    <div class="d-flex align-items-center"><i class="mdi mdi-alpha-k-box-outline fs-3 px-2"></i>
+                    <div class="d-flex align-items-center"><i class="mdi mdi-eye fs-3 px-2" title="View Count"></i> {{
+                        keep.views
+                    }}</div>
+                    <div class="d-flex align-items-center"><i class="mdi mdi-alpha-k-box-outline fs-3 px-2"
+                        title="Kept Count"></i>
                       {{ keep.kept }}
                     </div>
                   </div>
@@ -28,21 +31,22 @@
               </div>
               <div class="col-12">
                 <div class="row justify-content-between">
-                  <div class="col-6 d-flex align-items-center">
-                    <form @submit.prevent="handleSubmit()" v-if="account">
+                  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+                    <form @submit.prevent="handleSubmit()" v-if="account.id">
                       <div class="d-flex align-items-center">
-                        <div class="input-group p-3">
+                        <div class="input-group px-3">
+                          <label for="vaults" class="input-group-text">Vaults</label>
                           <select class="form-select" v-model="editable.vaultId" id="vaults">
                             <option :value="v.id" v-for="v in vaults">{{ v.name }}</option>
                           </select>
                         </div>
-                        <button type="submit" class="btn btn-warning">Save</button>
+                        <button type="submit" class="btn btn-dark" aria-label="Add to a vault">Save</button>
                       </div>
                     </form>
                   </div>
-                  <div class="col-6 d-flex align-items-center justify-content-end">
+                  <div class="col-xl-6 d-flex align-items-center justify-content-center">
                     <div class="d-flex align-items-center text-end p-2 rounded selectable" data-bs-dismiss="modal"
-                      @click="GoToProfile(keep.creatorId)">
+                      @click="GoToProfile(keep.creatorId)" aria-label="Go to Profile Page">
                       <img class="img-fluid profile-img" :src="keep.creator?.picture" alt="Creator Profile Picture"
                         :title="keep.creator?.name">
                       <h5 class="px-2 creator-name">{{ keep.creator?.name }}</h5>
@@ -134,7 +138,7 @@ export default {
   }
 
   .creator-name {
-    font-size: 1.3vw;
+    font-size: medium;
   }
 }
 </style>

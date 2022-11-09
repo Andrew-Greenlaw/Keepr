@@ -4,7 +4,7 @@
       <div class="background d-flex align-items-end h-100">
         <div class="d-flex flex-column justify-content-between h-100 w-100">
           <i class="mdi mdi-lock text-end p-2 fs-3 text-light" :style="vault.isPrivate ? '' : 'visibility: hidden'"></i>
-          <h3 class="text-light p-1">{{ vault.name }}</h3>
+          <h3 class="text-light p-1 text-shadow">{{ vault.name }}</h3>
         </div>
       </div>
     </div>
@@ -35,6 +35,13 @@ export default {
   background-size: cover;
   background-position: center;
   transition: transform .2s;
+}
+
+.text-shadow {
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(83, 83, 83);
+  font-weight: bold;
+  letter-spacing: 0.08rem
 }
 
 .vault-card:hover {

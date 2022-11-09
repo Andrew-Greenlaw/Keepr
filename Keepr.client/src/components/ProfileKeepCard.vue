@@ -1,14 +1,15 @@
 <template>
-  <div class="keep-card">
+  <div class="keep-card shadow">
     <img class="photo img-fluid selectable" :src="keep.img" alt="keep image" data-bs-toggle="modal"
-      data-bs-target="#keepModal" @click="GetKeepById(keep.id)">
+      data-bs-target="#keepModal" @click="GetKeepById(keep.id)" aria-label="Open Keep Detail">
     <div class="text">
       <div>
-        <h3>{{ keep.name }}</h3>
+        <h3 class="text-shadow">{{ keep.name }}</h3>
       </div>
     </div>
     <div class="button-delete selectable bg-danger d-flex justify-content-center align-items-center"
-      @click="RemoveMyKeep(keep.id)" v-if="account.id == keep.creatorId"><i class="mdi mdi-window-close"></i></div>
+      @click="RemoveMyKeep(keep.id)" v-if="account.id == keep.creatorId" aria-label="Delete This Keep"
+      title="Delete Keep"><i class="mdi mdi-window-close"></i></div>
   </div>
 </template>
 
@@ -46,7 +47,18 @@ export default {
 .keep-card {
   margin-bottom: 1.5rem;
   position: relative;
+  transition: transform .2s;
+}
 
+.keep-card:hover {
+  transform: scale(1.05)
+}
+
+.text-shadow {
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(83, 83, 83);
+  font-weight: bold;
+  letter-spacing: 0.08rem
 }
 
 .button-delete {

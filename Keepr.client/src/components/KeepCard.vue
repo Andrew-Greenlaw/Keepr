@@ -1,13 +1,15 @@
 <template>
   <div class="keep-card shadow">
     <img class="photo img-fluid selectable" :src="keep.img" alt="keep image" data-bs-toggle="modal"
-      data-bs-target="#keepModal" @click="GetKeepById(keep.id)">
-    <div class="text">
+      data-bs-target="#keepModal" @click="GetKeepById(keep.id)" aria-label="Open Keep Detail">
+    <div class="d-flex align-items-end justify-content-between text w-100">
       <div>
-        <h3 class="keep-name">{{ keep.name }}</h3>
+        <h3 class="keep-name text-shadow px-2">{{ keep.name }}</h3>
+      </div>
+      <div class="p-2">
+        <img class="profile-img" :src="keep.creator?.picture" :alt="keep.creator?.name" :title="keep.creator?.name">
       </div>
     </div>
-    <img class="profile-img" :src="keep.creator?.picture" :alt="keep.creator?.name" :title="keep.creator?.name">
     <div class="button-delete selectable bg-danger d-flex justify-content-center align-items-center"
       @click="RemoveMyKeep(keep.id)" v-if="account.id == keep.creatorId"><i class="mdi mdi-window-close"></i></div>
   </div>
@@ -84,26 +86,26 @@ export default {
 
 .text {
   position: absolute;
-  bottom: 1rem;
-  left: .5rem;
+  bottom: 0rem;
+  left: 0rem;
   color: white;
-  width: auto;
 }
 
 .profile-img {
-  position: absolute;
-  bottom: 1rem;
-  right: .5rem;
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
 }
 
+.text-shadow {
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(83, 83, 83);
+  font-weight: bold;
+  letter-spacing: 0.08rem
+}
+
 @media screen and (max-width: 1026px) {
   .profile-img {
-    position: absolute;
-    bottom: 1rem;
-    right: .5rem;
     height: 2rem;
     width: 2rem;
     border-radius: 50%;
