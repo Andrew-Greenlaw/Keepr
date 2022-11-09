@@ -25,6 +25,7 @@ class KeepsService {
     const res = await api.delete("api/keeps/" + id)
     console.log(res.data)
     AppState.keeps = AppState.keeps.filter(k => k.id != id)
+    AppState.profileKeeps = AppState.profileKeeps.filter(k => k.id != id)
   }
 }
 export const keepsService = new KeepsService()

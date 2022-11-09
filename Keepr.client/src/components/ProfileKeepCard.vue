@@ -36,6 +36,15 @@ export default {
         } catch (error) {
           Pop.error("[GetByKeepId]", error)
         }
+      },
+      async RemoveMyKeep(id) {
+        try {
+          const yes = await Pop.confirm("Delete Your Keep?")
+          if (!yes) { return }
+          await keepsService.DeleteKeep(id)
+        } catch (error) {
+          Pop.error('[RemoveMyKeep]', error)
+        }
       }
     }
   }

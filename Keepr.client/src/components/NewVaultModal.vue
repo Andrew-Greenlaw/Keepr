@@ -23,7 +23,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
-          <button type="submit" class="btn btn-primary" aria-label="Create">Create</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Create">Create</button>
         </div>
       </form>
     </div>
@@ -32,6 +32,7 @@
 
 <script>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { AppState } from '../AppState.js'
 import { AuthService } from '../services/AuthService.js'
 import { vaultsService } from '../services/VaultsService.js'
@@ -39,6 +40,7 @@ import Pop from '../utils/Pop.js'
 
 export default {
   setup() {
+    const router = useRouter()
     const editable = ref({ description: "Not Implemented" })
     return {
       editable,
@@ -48,6 +50,7 @@ export default {
             return AuthService.loginWithRedirect()
           }
           await vaultsService.createVault(editable.value)
+          router.push({ name: 'Account' })
         } catch (error) {
           Pop.error(error, "[Handling Submit]")
         }

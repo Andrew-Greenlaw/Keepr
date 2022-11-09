@@ -38,13 +38,14 @@
                           <label for="vaults" class="input-group-text">Vaults</label>
                           <select class="form-select" v-model="editable.vaultId" id="vaults">
                             <option :value="v.id" v-for="v in vaults">{{ v.name }}</option>
+                            <option selected>Select a Vault</option>
                           </select>
                         </div>
                         <button type="submit" class="btn btn-dark" aria-label="Add to a vault">Save</button>
                       </div>
                     </form>
                   </div>
-                  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+                  <div class="col-xl-6 d-flex align-items-center justify-content-center mt-1">
                     <div class="d-flex align-items-center text-end p-2 rounded selectable" data-bs-dismiss="modal"
                       @click="GoToProfile(keep.creatorId)" aria-label="Go to Profile Page">
                       <img class="img-fluid profile-img" :src="keep.creator?.picture" alt="Creator Profile Picture"

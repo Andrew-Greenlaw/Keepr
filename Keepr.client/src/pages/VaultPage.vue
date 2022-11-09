@@ -42,7 +42,7 @@
 import Pop from '../utils/Pop.js'
 import { vaultsService } from '../services/VaultsService.js'
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, watchEffect } from 'vue'
+import { onMounted, onUnmounted, watchEffect } from 'vue'
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState.js'
 export default {

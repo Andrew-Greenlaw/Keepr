@@ -30,7 +30,8 @@
                 <div class="row justify-content-between">
                   <div class="col-6 d-flex align-items-center justify-content-center">
                     <button type="button" class="btn selectable" @click="RemoveKeepFromVault(keep.id)"
-                      v-if="account.id == vault.creatorId"><i class="mdi mdi-cancel"></i> Remove</button>
+                      v-if="account.id == vault.creatorId" aria-label="Remove Keep From Vault"><i
+                        class="mdi mdi-cancel"></i> Remove</button>
                   </div>
                   <div class="col-6 d-flex align-items-center justify-content-end">
                     <div class="d-flex align-items-center text-end p-2 rounded selectable" data-bs-dismiss="modal"

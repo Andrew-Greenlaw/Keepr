@@ -8,12 +8,13 @@
       <div class="edit-button col-md-7 text-end">
         <div class="dropdown ">
           <button class="btn dropdown-toggle lighten-30 text-uppercase selectable rounded" type="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+            data-bs-toggle="dropdown" aria-expanded="false" title="Options">
             ...
           </button>
           <ul class="dropdown-menu">
             <li>
-              <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAccountModal">Edit Account</div>
+              <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAccountModal"
+                aria-label="Edit Account">Edit Account</div>
             </li>
           </ul>
         </div>
