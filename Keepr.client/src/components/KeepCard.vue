@@ -4,7 +4,7 @@
       data-bs-target="#keepModal" @click="GetKeepById(keep.id)">
     <div class="text">
       <div>
-        <h3>{{ keep.name }}</h3>
+        <h3 class="keep-name">{{ keep.name }}</h3>
       </div>
     </div>
     <img class="profile-img" :src="keep.creator?.picture" :alt="keep.creator?.name" :title="keep.creator?.name">
@@ -59,6 +59,10 @@ export default {
   transition: transform .2s;
 }
 
+.keep-name {
+  font-size: 3vw;
+}
+
 .keep-card:hover {
   transform: scale(1.05)
 }
@@ -93,5 +97,17 @@ export default {
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 1026px) {
+  .profile-img {
+    position: absolute;
+    bottom: 1rem;
+    right: .5rem;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+  }
+
 }
 </style>

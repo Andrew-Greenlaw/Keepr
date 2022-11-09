@@ -5,9 +5,9 @@ import { api } from './AxiosService'
 class KeepsService {
   async GetAllKeeps() {
     const res = await api.get("api/keeps")
-    // console.log(res.data)
+    console.log(res.data)
     AppState.keeps = res.data.map(k => new Keep(k))
-    // console.log(AppState.keeps)
+    console.log(AppState.keeps)
   }
   async GetKeepById(id) {
     AppState.keep = {}

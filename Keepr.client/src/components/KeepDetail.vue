@@ -31,12 +31,12 @@
                   <div class="col-6 d-flex align-items-center">
                     <form @submit.prevent="handleSubmit()" v-if="account">
                       <div class="d-flex align-items-center">
-                        <div class="input-group">
+                        <div class="input-group p-3">
                           <select class="form-select" v-model="editable.vaultId" id="vaults">
                             <option :value="v.id" v-for="v in vaults">{{ v.name }}</option>
                           </select>
                         </div>
-                        <button type="submit" class="btn btn-info">Save</button>
+                        <button type="submit" class="btn btn-warning">Save</button>
                       </div>
                     </form>
                   </div>
@@ -45,7 +45,7 @@
                       @click="GoToProfile(keep.creatorId)">
                       <img class="img-fluid profile-img" :src="keep.creator?.picture" alt="Creator Profile Picture"
                         :title="keep.creator?.name">
-                      <h5 class="px-2">{{ keep.creator?.name }}</h5>
+                      <h5 class="px-2 creator-name">{{ keep.creator?.name }}</h5>
                     </div>
                   </div>
                 </div>
@@ -98,6 +98,11 @@ export default {
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.creator-name {
+  font-size: 1.3vw;
 }
 
 .modal-content {
@@ -114,11 +119,10 @@ export default {
     height: 2rem;
     width: 2rem;
     border-radius: 50%;
+    object-fit: cover;
   }
 
-  h5 {
-    font-size: x-small;
-  }
+
 }
 
 @media screen {
@@ -126,10 +130,11 @@ export default {
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
+    object-fit: cover;
   }
 
-  h5 {
-    font-size: x-small;
+  .creator-name {
+    font-size: 1.3vw;
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="profile-page container-fluid">
     <div class="row justify-content-center">
-      <div class="col-7 cover-img rounded shadow d-flex justify-content-center align-items-end mt-5"
+      <div class="col-md-7 cover-img rounded shadow d-flex justify-content-center align-items-end mt-5"
         :style="{ backgroundImage: `url(${account.coverImg})` }" title="account cover image">
         <img class="img-fluid shadow" :src="account.picture" alt="Account Picture" :title="account.name">
       </div>
@@ -18,7 +18,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+      <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
         <h1>{{ account.name }}</h1>
         <div>
           <h4>{{ vaults.length }} Vaults | {{ keeps.length }} Keeps</h4>
@@ -87,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 .cover-img {
   height: 25rem;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
 
   img {
@@ -95,6 +95,7 @@ export default {
     width: 10rem;
     border-radius: 50%;
     transform: translateY(5rem);
+    object-fit: cover;
   }
 }
 

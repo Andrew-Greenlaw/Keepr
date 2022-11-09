@@ -20,6 +20,10 @@
   <ModalComponent id="newVaultModal">
     <NewVaultModal />
   </ModalComponent>
+
+  <ModalComponent id="editAccountModal">
+    <EditAccountModal />
+  </ModalComponent>
 </template>
 
 <script>

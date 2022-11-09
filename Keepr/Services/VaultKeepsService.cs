@@ -31,7 +31,7 @@ public class VaultKeepsService
 
   internal void DeleteVaultKeep(int id, string userId)
   {
-    VaultKeep vaultKeep = _repo.GetById(id);
+    VaultKeep vaultKeep = GetById(id);
     if (vaultKeep.CreatorId != userId)
     {
       throw new Exception("You Cannot delete this go away");

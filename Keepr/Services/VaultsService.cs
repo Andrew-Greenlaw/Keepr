@@ -52,7 +52,7 @@ public class VaultsService
 
   internal void DeleteVault(int id, Account userInfo)
   {
-    Vault vault = GetVaultById(id, "");
+    Vault vault = GetVaultById(id, userInfo.Id);
     if (vault.CreatorId != userInfo.Id)
     {
       throw new Exception("you cannot delete this go away");

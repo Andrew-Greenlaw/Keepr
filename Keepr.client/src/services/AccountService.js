@@ -28,6 +28,11 @@ class AccountService {
     AppState.profileKeeps = res.data.map(k => new Keep(k))
     console.log('My Keeps', AppState.profileKeeps)
   }
+  async editAccount(data) {
+    console.log("does this look right", data)
+    const res = await api.put("/account", data)
+    AppState.account = new Account(res.data)
+  }
 }
 
 export const accountService = new AccountService()

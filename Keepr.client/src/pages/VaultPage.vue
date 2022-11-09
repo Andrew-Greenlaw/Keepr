@@ -43,7 +43,7 @@
 <script>
 import Pop from '../utils/Pop.js'
 import { vaultsService } from '../services/VaultsService.js'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { onMounted, watchEffect } from 'vue'
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState.js'
@@ -52,6 +52,7 @@ import { router } from '../router.js'
 export default {
   setup() {
     const route = useRoute()
+    const router = useRouter()
     async function GetVaultById() {
       try {
         await vaultsService.GetVaultById(route.params.id)
@@ -75,11 +76,14 @@ export default {
       vault: computed(() => AppState.vault),
       keepsInVault: computed(() => AppState.keepsInVault),
       account: computed(() => AppState.account),
-      async deleteVault() {
+      async deleteVault(id) {
         try {
-
+          const yes = await Pop.confirm("are you sure you want to delete this vault?")
+          if (!yes) { return }
+          await vaultsService.deleteVault(id)
+          router.push({ name: 'Account' })
         } catch (error) {
-
+          Pop.error('[DeleteVault]', error)
         }
       }
     }

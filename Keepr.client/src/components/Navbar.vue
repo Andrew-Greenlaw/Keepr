@@ -20,8 +20,8 @@
       </div>
       <!-- LOGIN COMPONENT HERE -->
     </div>
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
+    <router-link :to="{ name: 'Home' }">
+      <div class="d-flex align-items-center">
         <img alt="logo" src="Keepr logo.png" height="45" />
       </div>
     </router-link>

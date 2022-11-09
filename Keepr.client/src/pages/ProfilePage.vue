@@ -1,11 +1,11 @@
 <template>
   <div class="profile-page container-fluid">
     <div class="row justify-content-center">
-      <div class="col-7 cover-img rounded shadow d-flex justify-content-center align-items-end mt-5"
+      <div class="col-md-7 cover-img rounded shadow d-flex justify-content-center align-items-end mt-5"
         :style="{ backgroundImage: `url(${profile.coverImg})` }" title="profile cover image">
         <img class="img-fluid shadow" :src="profile.picture" alt="Profile Picture" :title="profile.name">
       </div>
-      <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+      <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
         <h1>{{ profile.name }}</h1>
         <div>
           <h4>{{ vaults.length }} Vaults | {{ keeps.length }} Keeps</h4>

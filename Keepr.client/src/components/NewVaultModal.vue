@@ -12,10 +12,6 @@
               required aria-label="Name Input">
           </div>
           <div class="mb-3">
-            <textarea type="text" class="form-control" id="description" v-model="editable.description"
-              placeholder="Description" rows="3" required aria-label="Description Input" maxlength="300"></textarea>
-          </div>
-          <div class="mb-3">
             <label for="img" class="form-label ps-2">Image</label>
             <input type="url" class="form-control" id="img" v-model="editable.img" placeholder="https://Img.com.png"
               required>
@@ -43,7 +39,7 @@ import Pop from '../utils/Pop.js'
 
 export default {
   setup() {
-    const editable = ref({})
+    const editable = ref({ description: "Not Implemented" })
     return {
       editable,
       async handSubmit() {
