@@ -1,19 +1,19 @@
 <template>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form @submit="handleSubmit()">
+      <form @submit.prevent="handleSubmit()">
         <div class="modal-header">
           <h5 class="modal-title">Add Your Vault</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <input type="text" class="form-control" id="name" v-model="editable.name" placeholder="Name">
+            <input type="text" class="form-control" id="name" v-model="editable.name" placeholder="Name" required>
           </div>
           <div class="mb-3">
             <label for="picture" class="form-label">Picture</label>
             <input type="url" class="form-control" id="picture" v-model="editable.picture"
-              placeholder="https://picture.com.png">
+              placeholder="https://picture.com.png" required>
           </div>
           <div class="mb-3">
             <label for="coverImg" class="form-label">CoverImg</label>

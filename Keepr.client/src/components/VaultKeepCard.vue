@@ -1,15 +1,15 @@
 <template>
   <div class="keep-card shadow">
     <img class="photo img-fluid selectable" :src="keep.img" alt="keep image" data-bs-toggle="modal"
-      data-bs-target="#vaultKeepModal" @click="GetKeepById(keep.id)" aria-label="Open Keep Detail">
+      data-bs-target="#keepModal" @click="GetKeepById(keep.id)" aria-label="Open Keep Detail">
     <div class="text">
       <div>
         <h3 class="text-shadow">{{ keep.name }}</h3>
       </div>
     </div>
     <div class="button-delete selectable bg-danger d-flex justify-content-center align-items-center"
-      @click="RemoveKeepFromVault(keep.id)" v-if="account.id == vault.creatorId" aria-label="Remove Keep From Vault"
-      title="Remove Keep"><i class="mdi mdi-window-close"></i>
+      @click="RemoveKeepFromVault(keep.vaultKeepId)" v-if="account.id == vault.creatorId"
+      aria-label="Remove Keep From Vault" title="Remove Keep"><i class="mdi mdi-window-close"></i>
     </div>
   </div>
 </template>
@@ -48,6 +48,8 @@ export default {
       },
       async RemoveKeepFromVault(id) {
         try {
+          const yes = await Pop.confirm("Remove this From Vault?")
+          if (!yes) { return }
           await vaultKeepsService.deleteVaultKeep(id)
         } catch (error) {
           Pop.error('[RemoveKeepFromVault]', error)

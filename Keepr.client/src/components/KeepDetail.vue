@@ -36,9 +36,8 @@
                       <div class="d-flex align-items-center">
                         <div class="input-group px-3">
                           <label for="vaults" class="input-group-text">Vaults</label>
-                          <select class="form-select" v-model="editable.vaultId" id="vaults">
+                          <select class="form-select" v-model="editable.vaultId" id="vaults" required>
                             <option :value="v.id" v-for="v in vaults">{{ v.name }}</option>
-                            <option selected>Select a Vault</option>
                           </select>
                         </div>
                         <button type="submit" class="btn btn-dark" aria-label="Add to a vault">Save</button>

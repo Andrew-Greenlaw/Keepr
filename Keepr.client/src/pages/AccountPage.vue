@@ -13,7 +13,7 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAccountModal"
+              <div class="dropdown-item selectable" data-bs-toggle="modal" data-bs-target="#editAccountModal"
                 aria-label="Edit Account">Edit Account</div>
             </li>
           </ul>

@@ -30,7 +30,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="masonry-with-columns">
-          <VaultKeepCard v-for="k in keepsInVault" :key="k.id" :keep="k" :vault="vault" />
+          <VaultKeepCard v-for="k in keepsInVault" :key="k.vaultKeepId" :keep="k" :vault="vault" />
         </div>
       </div>
     </div>

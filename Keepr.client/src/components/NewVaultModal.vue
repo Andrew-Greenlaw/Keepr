@@ -1,7 +1,7 @@
 <template>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form @submit="handleSubmit()">
+      <form @submit.prevent="handleSubmit()">
         <div class="modal-header">
           <h5 class="modal-title">Add Your Vault</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

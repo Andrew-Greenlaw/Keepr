@@ -11,7 +11,8 @@
       </div>
     </div>
     <div class="button-delete selectable bg-danger d-flex justify-content-center align-items-center"
-      @click="RemoveMyKeep(keep.id)" v-if="account.id == keep.creatorId"><i class="mdi mdi-window-close"></i></div>
+      @click="RemoveMyKeep(keep.id)" v-if="account.id == keep.creatorId" title="Delete Keep"><i
+        class="mdi mdi-window-close"></i></div>
   </div>
 </template>
 
