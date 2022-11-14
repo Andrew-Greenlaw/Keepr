@@ -8,13 +8,13 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <input type="text" class="form-control" id="name" v-model="editable.name" placeholder="Name" maxlength="20"
-              required aria-label="Name Input">
+            <input type="text" class="form-control" id="vaultName" v-model="editable.name" placeholder="Name"
+              maxlength="20" required aria-label="Name Input">
           </div>
           <div class="mb-3">
-            <label for="img" class="form-label ps-2">Image</label>
-            <input type="url" class="form-control" id="img" v-model="editable.img" placeholder="https://Img.com.png"
-              required>
+            <label for="vaultImg" class="form-label ps-2">Image</label>
+            <input type="url" class="form-control" id="vaultImg" v-model="editable.img"
+              placeholder="https://Img.com.png" required>
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="privateCheckBox" v-model="editable.isPrivate">

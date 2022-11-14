@@ -8,16 +8,16 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <input type="text" class="form-control" id="name" v-model="editable.name" placeholder="Name" maxlength="20"
-              required aria-label="Name Input">
+            <input type="text" class="form-control" id="keepName" v-model="editable.name" placeholder="Name"
+              maxlength="20" required aria-label="Name Input">
           </div>
           <div class="mb-3">
-            <textarea type="text" class="form-control" id="description" v-model="editable.description"
+            <textarea type="text" class="form-control" id="keepDescription" v-model="editable.description"
               placeholder="Description" rows="3" required aria-label="Description Input" maxlength="100"></textarea>
           </div>
           <div class="mb-3">
-            <label for="img" class="form-label ps-2">Image</label>
-            <input type="url" class="form-control" id="img" v-model="editable.img" placeholder="https://Img.com.png"
+            <label for="keepImg" class="form-label ps-2">Image</label>
+            <input type="url" class="form-control" id="keepImg" v-model="editable.img" placeholder="https://Img.com.png"
               required>
           </div>
         </div>

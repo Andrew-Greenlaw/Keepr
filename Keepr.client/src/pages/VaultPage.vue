@@ -45,6 +45,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { onMounted, onUnmounted, watchEffect } from 'vue'
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState.js'
+import { onAuthLoaded } from '@bcwdev/auth0provider-client'
 export default {
   setup() {
     const route = useRoute()
@@ -69,9 +70,12 @@ export default {
 
       }
     }
-    onMounted(() => {
+    onAuthLoaded(() => {
       GetVaultById()
       GetVaultKeeps()
+    })
+
+    onMounted(() => {
     })
 
     // watchEffect(() => {
