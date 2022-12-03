@@ -4,8 +4,8 @@ namespace Keepr.Controllers;
 [Route("api/[controller]")]
 public class VaultKeepsController : ControllerBase
 {
-  public readonly VaultKeepsService _vks;
-  public readonly Auth0Provider _auth0provider;
+  private readonly VaultKeepsService _vks;
+  private readonly Auth0Provider _auth0provider;
 
   public VaultKeepsController(VaultKeepsService vks, Auth0Provider auth0Provider)
   {
